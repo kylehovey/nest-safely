@@ -5,7 +5,7 @@ const forward = new Map([
   [ "catch", (m, args) => m.catch(...args) ]
 ]);
 
-const Better = obj => new Proxy(Maybe(obj), {
+const Safe = obj => new Proxy(Maybe(obj), {
   get : (m, key) => key === "value"
     ? m.value()
     : forward.has(key)
@@ -13,7 +13,4 @@ const Better = obj => new Proxy(Maybe(obj), {
       : Better(m.then(({ [key] : val }) => val))
 });
 
-module.exports = Better;
-
-const nested = { a : { b : { c : { d : 42 } } } };
-const safe = Better(nested);
+module.exports = Safe;
