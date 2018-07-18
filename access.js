@@ -6,9 +6,14 @@ const forward = new Map([
 ]);
 
 const Better = obj => new Proxy(Maybe(obj), {
-  get : (m, key) => forward.has(key)
-    ? (...args) => forward.get(key)(m, args)
-    : Better(m.then(({ [key] : val }) => val))
+  get : (m, key) => key === "value"
+    ? m.value()
+    : forward.has(key)
+      ? (...args) => Better(forward.get(key)(m, args))
+      : Better(m.then(({ [key] : val }) => val))
 });
 
-export default Better;
+module.exports = Better;
+
+const nested = { a : { b : { c : { d : 42 } } } };
+const safe = Better(nested);

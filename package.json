@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "jest": "^23.4.1"
+  },
+  "scripts" : {
+    "test" : "jest"
+  },
+  "name": "nest-safely",
+  "version": "1.0.0",
+  "main": "access.js",
+  "repository": "https://github.com/kylehovey/nest-safely",
+  "author": "Kyle Hovey",
+  "license": "MIT",
+  "private": false
+}
