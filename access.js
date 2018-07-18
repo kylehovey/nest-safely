@@ -1,11 +1,15 @@
-const Better = obj => new Proxy(obj, {
-  get : (obj, key) => obj[key] instanceof Object
-      ? Better(obj[key])
-      : obj[key] === undefined
-        ? undefined
-        : obj[key]
+const Maybe = require("./maybe");
+const forward = new Map([
+  [ "value", m => m.value ],
+  [ "or", (m, args) => m.or(...args) ],
+  [ "then", (m, args) => m.then(...args) ],
+  [ "catch", (m, args) => m.catch(...args) ]
+]);
+
+const Better = obj => new Proxy(Maybe(obj), {
+  get : (m, key) => forward.has(key)
+    ? (...args) => forward.get(key)(m, args)
+    : Better(m.then(({ [key] : val }) => val))
 });
 
-const data = Better({ x : { y : { z : 100 } } });
-
-console.log(data.x.y.x);
+module.exports = Better;
