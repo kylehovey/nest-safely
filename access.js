@@ -9,8 +9,8 @@ const Safe = obj => new Proxy(Maybe(obj), {
   get : (m, key) => key === "value"
     ? m.value()
     : forward.has(key)
-      ? (...args) => Better(forward.get(key)(m, args))
-      : Better(m.then(({ [key] : val }) => val))
+      ? (...args) => Safe(forward.get(key)(m, args))
+      : Safe(m.then(({ [key] : val }) => val))
 });
 
 module.exports = Safe;
