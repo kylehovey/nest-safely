@@ -2,7 +2,7 @@
 const [ it, describe ] = Array(2).fill(() => {});
 const Maybe = require("./maybe");
 
-describe(Maybe, () => {
+describe("Maybe", () => {
   const nested = { a : { b : { c : { d : 42 } } } };
 
   it("chains like a promise", () => {
@@ -15,9 +15,7 @@ describe(Maybe, () => {
         .value
     ).toEqual(42);
   });
-});
 
-describe(Maybe, () => {
   it("falls through to catch", () => {
     expect(
       Maybe(nested)
@@ -41,20 +39,20 @@ describe(Maybe, () => {
         .then(x => x + 1)
         .value
     ).toEqual(9001);
+  });
 
-    it("will act as a unit operator when recursed", () => {
-      expect(
+  it("will act as a unit operator when recursed", () => {
+    expect(
+      Maybe(
         Maybe(
-          Maybe(
-            nested
-          )
+          nested
         )
-        .then(({ a }) => a)
-        .then(({ b }) => b)
-        .then(({ c }) => c)
-        .then(({ d }) => d)
-        .value
-      ).toEqual(42);
-    });
+      )
+      .then(({ a }) => a)
+      .then(({ b }) => b)
+      .then(({ c }) => c)
+      .then(({ d }) => d)
+      .value
+    ).toEqual(42);
   });
 });

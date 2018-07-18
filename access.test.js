@@ -2,7 +2,7 @@
 const [ it, describe ] = Array(2).fill(() => {});
 const Better = require("./access.js");
 
-describe(Better, () => {
+describe("Better", () => {
   const nested = { a : { b : { c : { d : 42 } } } };
 
   it("still allows intermediary access like a normal object", () => {
