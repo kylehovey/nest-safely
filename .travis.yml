@@ -5,6 +5,7 @@ cache:
 install:
   - git clone https://github.com/kylehovey/nest-safely
   - cd nest-safely
+  - yarn global add eslint
   - yarn install
 script:
   - yarn test
