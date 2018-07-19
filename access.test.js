@@ -32,6 +32,19 @@ describe("Better", () => {
 
     expect(
       obj.a.b.fish.atrus.catch(x => JSON.stringify(x)).value
-    ).toBe("{\"c\":{\"d\":42}}")
+    ).toBe("{\"c\":{\"d\":42}}");
+  });
+
+  it("allows for 'or' or 'catch' anywhere in the chain", () => {
+    const obj = Better(nested);
+
+    expect(
+      obj.a.b.does.not.have
+        .or({ x : { y : 34 } })
+        .x
+        .nope
+        .catch(last => `Last seen: ${JSON.stringify(last)}`)
+        .value
+    ).toBe("Last seen: {\"y\":34}");
   });
 });
