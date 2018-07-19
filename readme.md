@@ -1,6 +1,6 @@
 # :link: Nest Safely
 [![Build Status](https://travis-ci.org/kylehovey/nest-safely.svg?branch=master)](https://travis-ci.org/kylehovey/nest-safely)
-[!License](https://img.shields.io/packagist/l/doctrine/orm.svg)
+![License](https://img.shields.io/packagist/l/doctrine/orm.svg)
 
 Despite allowing remarkable flexibility and ease of use, when accessing objects in JavaScript it doesn't take long before you run into this sort of error:
 
