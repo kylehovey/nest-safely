@@ -1,4 +1,5 @@
 # Nest Safely
+[![Build Status](https://travis-ci.org/kylehovey/nest-safely.svg?branch=master)](https://travis-ci.org/kylehovey/nest-safely)
 
 Despite allowing remarkable flexibility and ease of use, when accessing objects in JavaScript it doesn't take long before you run into this sort of error:
 
