@@ -21,6 +21,12 @@ describe("Better", () => {
     expect(obj.a.fish.hoopla.dni.or(9001).value).toBe(9001);
   });
 
+  it("will not use the default value if not nothing", () => {
+    const obj = Better(nested);
+
+    expect(obj.a.b.c.d.or(9001).value).toBe(42);
+  });
+
   it("lets you find what the last value was", () => {
     const obj = Better(nested);
 
