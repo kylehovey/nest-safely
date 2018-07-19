@@ -56,4 +56,21 @@ const val = data.deeply.nested.does.not.have
 console.log(val); // Last seen: { "source" : 42 }
 ```
 
+And, just like a `Promise` chain, `or` or `catch` can be located anywhere in the chain:
+
+```JavaScript
+const Safe = require("nest-safely");
+
+const data = Safe({ deeply : { nested : { source : 42 } } });
+
+const val = data.deeply.nested.does.not.have
+  .or({ x : { y : 34 } })
+  .x
+  .nope
+  .catch(last => `Last seen: ${JSON.stringify(last)}`)
+  .value;
+
+console.log(val); // Last seen: { "y" : 42 }
+```
+
 I hope this small 30-line library is useful for you! If you have suggestions, make an issue and I'll be happy to look over it.
