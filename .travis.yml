@@ -1,0 +1,10 @@
+language: node_js
+cache:
+  directories:
+    - "node_modules"
+install:
+  - git clone https://github.com/kylehovey/nest-safely
+  - cd nest-safely
+  - yarn install
+script:
+  - yarn test
