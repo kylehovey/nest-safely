@@ -13,6 +13,6 @@ const Just = (x, last) => ({
   type : MType
 });
 
-const Maybe = (x, last = null) => isMaybe(x) ? x : Just(x, last)
+const Maybe = (x, last = null) => isMaybe(x) ? x : Just(x, last);
 
 module.exports = Maybe;

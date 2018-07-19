@@ -1,4 +1,4 @@
-const Better = require("./access.js");
+const Better = require("../src/access/access.js");
 
 describe("Better", () => {
   const nested = { a : { b : { c : { d : 42 } } } };

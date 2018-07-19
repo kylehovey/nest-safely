@@ -1,0 +1,32 @@
+{
+  "parser" : "babel-eslint",
+  "env": {
+    "es6" : true,
+    "node" : true
+  },
+  "extends" : "eslint:recommended",
+  "rules" : {
+    "indent" : 0,
+    "linebreak-style" : [ "error", "unix" ],
+    "quotes" : [ "error", "double" ],
+    "semi" : [ "error", "always" ],
+    "array-bracket-spacing" : [ "error", "always" ],
+    "key-spacing" : [ "error", { "beforeColon": true } ],
+    "space-infix-ops" : [ "error", { "int32Hint": false } ],
+    "max-len" : [ "error", 80 ],
+    "strict" : 2,
+    "no-implicit-coercion" : 2,
+    "no-unused-vars" : 2,
+    "no-undef" : 2,
+    "constructor-super" : 2,
+    "no-const-assign" : 2,
+    "no-dupe-class-members" : 2,
+    "no-this-before-super" : 2,
+    "no-useless-constructor" : 1,
+    "prefer-arrow-callback" : 1,
+    "prefer-const" : 1,
+    "no-var" : 2,
+    "prefer-rest-params" : 1,
+    "prefer-template" : 2
+  }
+}
