@@ -1,3 +1,5 @@
+"use strict";
+
 const Better = require("../src/access/access.js");
 
 describe("Better", () => {

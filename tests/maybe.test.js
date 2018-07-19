@@ -1,3 +1,5 @@
+"use strict";
+
 const Maybe = require("../src/maybe/maybe.js");
 describe("Maybe", () => {
   const nested = { a : { b : { c : { d : 42 } } } };

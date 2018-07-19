@@ -1,3 +1,5 @@
+"use strict";
+
 const Maybe = require("../maybe/maybe.js");
 const forward = new Map([
   [ "value", m => m.value ],
