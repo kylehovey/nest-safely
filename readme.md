@@ -1,6 +1,7 @@
 # :link: Nest Safely
 [![Build Status](https://travis-ci.org/kylehovey/nest-safely.svg?branch=master)](https://travis-ci.org/kylehovey/nest-safely)
 ![License](https://img.shields.io/packagist/l/doctrine/orm.svg)
+([![Codacy Badge](https://api.codacy.com/project/badge/Grade/b64b72f66ab342ba8d9d7a3d8fba8576)](https://www.codacy.com/app/kylehovey/nest-safely?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kylehovey/nest-safely&amp;utm_campaign=Badge_Grade)
 
 Despite allowing remarkable flexibility and ease of use, when accessing objects in JavaScript it doesn't take long before you run into this sort of error:
 
