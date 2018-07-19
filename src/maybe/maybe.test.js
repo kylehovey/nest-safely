@@ -1,4 +1,4 @@
-const Maybe = require("./maybe");
+const Maybe = require("../maybe/maybe.js");
 
 describe("Maybe", () => {
   const nested = { a : { b : { c : { d : 42 } } } };

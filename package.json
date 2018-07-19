@@ -7,7 +7,7 @@
   },
   "name": "nest-safely",
   "version": "1.0.0",
-  "main": "access.js",
+  "main": "index.js",
   "repository": "https://github.com/kylehovey/nest-safely",
   "author": "Kyle Hovey",
   "license": "MIT",
