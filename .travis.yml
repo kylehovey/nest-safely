@@ -6,6 +6,7 @@ install:
   - git clone https://github.com/kylehovey/nest-safely
   - cd nest-safely
   - yarn global add eslint
+  - yarn global add babel-eslint
   - yarn install
 script:
   - yarn test
