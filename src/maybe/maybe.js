@@ -1,5 +1,3 @@
-"use strict";
-
 const MType = Symbol("Maybe");
 const isMaybe = x => (x instanceof Object && x.type === MType);
 const isNone = x => x === null || x === undefined;

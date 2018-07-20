@@ -1,4 +1,5 @@
 {
+  "parser" : "babel-eslint",
   "env": {
     "es6" : true,
     "node" : true
@@ -7,13 +8,14 @@
   "rules" : {
     "indent" : 0,
     "linebreak-style" : [ "error", "unix" ],
+    "no-unexpected-multiline" : 0,
     "quotes" : [ "error", "double" ],
     "semi" : [ "error", "always" ],
     "array-bracket-spacing" : [ "error", "always" ],
     "key-spacing" : [ "error", { "beforeColon": true } ],
     "space-infix-ops" : [ "error", { "int32Hint": false } ],
     "max-len" : [ "error", 80 ],
-    "strict" : 2,
+    "strict" : 0,
     "no-implicit-coercion" : 2,
     "no-unused-vars" : 2,
     "no-undef" : 2,
