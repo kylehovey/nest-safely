@@ -3,6 +3,31 @@
 ![License](https://img.shields.io/packagist/l/doctrine/orm.svg)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b64b72f66ab342ba8d9d7a3d8fba8576)](https://www.codacy.com/app/kylehovey/nest-safely?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kylehovey/nest-safely&amp;utm_campaign=Badge_Grade)
 
+## TL;DR:
+
+Turn this:
+
+```JavaScript
+const data = { deeply : { nested : { source : { why : 42 } } } };
+
+if (data.deeply && data.deeply.nested && data.deeply.nested.source) {
+  console.log(data.deeply.nested.source.why);
+}
+````
+
+Into this:
+
+```JavaScript
+const data = { deeply : { nested : { source : { why : 42 } } } };
+
+console.log(
+  Safe(data).deeply.nested.source.why
+    [Safe.or]("Nothing found.")
+    [Safe.value]
+);
+````
+
+## The Details
 Despite allowing remarkable flexibility and ease of use, when accessing objects in JavaScript it doesn't take long before you run into this sort of error:
 
 ```JavaScript
