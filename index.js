@@ -1,5 +1,5 @@
 "use strict";
 
-const Just = require("./src/access/access.js");
+const Safe = require("./src/access/access.js");
 
-module.exports = Just;
+module.exports = Safe;
