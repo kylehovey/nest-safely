@@ -84,7 +84,7 @@ const val = data.deeply.nested.does.not.have
 console.log(val); // Last seen: { "source" : 42 }
 ```
 
-And, just like a `Promise` chain, `[Safe.or]` or `[Safe.catch]` can be located anywhere in the chain:
+And, just like a `Promise` chain, `[Safe.or]` or `[Safe.handle]` can be located anywhere in the chain:
 
 ```JavaScript
 const Safe = require("nest-safely");
@@ -95,7 +95,7 @@ const val = data.deeply.nested.does.not.have
   [Safe.or]({ x : { y : 34 } })
   .x
   .nope
-  [Safe.catch](last => `Last seen: ${JSON.stringify(last)}`)
+  [Safe.handle](last => `Last seen: ${JSON.stringify(last)}`)
   [Safe.value];
 
 console.log(val); // Last seen: { "y" : 42 }
