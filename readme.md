@@ -28,24 +28,24 @@ const Safe = require("nest-safely");
 
 const data = Safe({ deeply : { nested : { source : 42 } } });
 
-const val = data.deeply.no.way.anything.is.here.or("nothing was found").value;
+const val = data.deeply.no.way.anything.is.here[Safe.or]("nothing was found")[Safe.value];
 
 console.log(val); // "nothing was found"
 ```
 
-Notice the use of an additional term `or` in the chain. You can think of each `.` in the sequence as a `.then` in a Promise chain inasmuch as any undefined access will fall through to the end. In this case, a default value is provided to the `or` method which will not have its functionality invoked if the value has not dropped out in the sequence:
+Notice the use of an additional term `[Safe.or]` in the chain. You can think of each `.` in the sequence as a `.then` in a Promise chain inasmuch as any undefined access will fall through to the end. In this case, a default value is provided to the `[Safe.or]` method which will not have its functionality invoked if the value has not dropped out in the sequence:
 
 ```JavaScript
 const Safe = require("nest-safely");
 
 const data = Safe({ deeply : { nested : { source : 42 } } });
 
-const val = data.deeply.nested.source.or("nothing was found").value;
+const val = data.deeply.nested.source.[Safe.or]("nothing was found")[Safe.value];
 
 console.log(val); // 42
 ```
 
-The only other piece of machinery added is a `value` getter keyword that will unwrap the value out of the chain. Optionally, a `catch` method may also be used where you can supply a function that will be given the last value seen in the chain before `null` or `undefined` was encountered.
+The only other piece of machinery added is a `[Safe.value]` getter keyword that will unwrap the value out of the chain. Optionally, a `[Safe.handle]` method may also be used where you can supply a function that will be given the last value seen in the chain before `null` or `undefined` was encountered.
 
 ```JavaScript
 const Safe = require("nest-safely");
@@ -53,13 +53,13 @@ const Safe = require("nest-safely");
 const data = Safe({ deeply : { nested : { source : 42 } } });
 
 const val = data.deeply.nested.does.not.have
-  .catch(last => `Last seen: ${JSON.stringify(last)}`)
-  .value;
+  [Safe.handle](last => `Last seen: ${JSON.stringify(last)}`)
+  [Safe.value];
 
 console.log(val); // Last seen: { "source" : 42 }
 ```
 
-And, just like a `Promise` chain, `or` or `catch` can be located anywhere in the chain:
+And, just like a `Promise` chain, `[Safe.or]` or `[Safe.catch]` can be located anywhere in the chain:
 
 ```JavaScript
 const Safe = require("nest-safely");
@@ -67,13 +67,13 @@ const Safe = require("nest-safely");
 const data = Safe({ deeply : { nested : { source : 42 } } });
 
 const val = data.deeply.nested.does.not.have
-  .or({ x : { y : 34 } })
+  [Safe.or]({ x : { y : 34 } })
   .x
   .nope
-  .catch(last => `Last seen: ${JSON.stringify(last)}`)
-  .value;
+  [Safe.catch](last => `Last seen: ${JSON.stringify(last)}`)
+  [Safe.value];
 
 console.log(val); // Last seen: { "y" : 42 }
 ```
 
-I hope this small 30-line library is useful for you! If you have suggestions, make an issue and I'll be happy to look over it.
+I hope this small 40-line library is useful for you! If you have suggestions, make an issue and I'll be happy to look over it.
